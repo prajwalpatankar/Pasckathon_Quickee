@@ -8,15 +8,23 @@ app = Flask(__name__)
 # are viewing tthe stream)
 lock = threading.Lock()
 
-@app.route('/stream',methods = ['GET'])
-def stream():
-   return Response(generate(), mimetype = "multipart/x-mixed-replace; boundary=frame")
+ock = threading.Lock()
 
-def generate():
-   # grab global references to the lock variable
+@app.route('/stream/<string:id>',methods = ['GET'])
+def stream(id):
+      return Response(generate(id), mimetype = "multipart/x-mixed-replace; boundary=frame")
+   
+def find_camera(id):
+    cameras = [0, 2]
+    return cameras[int(id)]
+
+def generate(camera_id):
+
    global lock
-   # initialize the video stream
-   vc = cv2.VideoCapture(0)
+   cam = find_camera(camera_id)
+   print(cam)
+
+   vc = cv2.VideoCapture(cam)
    
    # check camera is open
    if vc.isOpened():
