@@ -4,8 +4,8 @@ Making of module to scan the given image and classify it whether its violent or 
 With the rapid growth of surveillance cameras to monitor the human activity and current situation of worlwide pandemic demands such system which recognize the violence and suspicious events automatically. 
 
 Tech stack:
-Flask
-React
+Flask <br />
+React <br />
 Machine Learning - Keras,python,SVM,CNN,LSTM
 
 
