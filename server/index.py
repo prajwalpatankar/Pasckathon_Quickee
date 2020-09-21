@@ -15,7 +15,7 @@ def stream(id):
       return Response(generate(id), mimetype = "multipart/x-mixed-replace; boundary=frame")
    
 def find_camera(id):
-    cameras = [0, 2]
+    cameras = [0, 1]
     return cameras[int(id)]
 
 def generate(camera_id):

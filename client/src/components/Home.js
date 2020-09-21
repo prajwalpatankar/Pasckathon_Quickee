@@ -6,9 +6,10 @@ const Home = () => {
     return(
         <div className="container">
             <Navbar />
-            <div className="center">
-                <h4 className="center">HOME</h4>
-                <p>lorem 5</p>
+            <div className="home">
+                <p>lorem</p>
+
+
             </div>
         </div>
     )

@@ -13,3 +13,20 @@ cd server
     pip3 install imutils opencv-python
     python3 -m venv env
     python index.py
+
+
+
+
+              <div className="form">
+
+            <div className="form-group">
+              <label htmlFor="username">Username</label><br></br>
+              <input type="text" name="username" placeholder="username" />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label><br></br>
+              <input type="password" name="password" placeholder="password" />
+            </div>
+
+          </div>

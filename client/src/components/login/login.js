@@ -1,5 +1,6 @@
 import React from "react";
 import loginImg from "../../login.png";
+import Loginform from "./Loginform.js"
 
 export class Login extends React.Component {
 
@@ -18,26 +19,8 @@ export class Login extends React.Component {
             <img src={loginImg} />
           </div>
 
-          <div className="form">
+          <Loginform />
 
-            <div className="form-group">
-              <label htmlFor="username">Username</label><br></br>
-              <input type="text" name="username" placeholder="username" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label><br></br>
-              <input type="password" name="password" placeholder="password" />
-            </div>
-
-          </div>
-
-        </div>
-
-        <div className="footer">
-          <button type="button" className="btn">
-            Login
-          </button>
         </div>
 
       </div>

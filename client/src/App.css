@@ -8,7 +8,7 @@
 
 .login {
   width: 420px;
-  height: 600px;
+  height: 640px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +86,17 @@
 }
 
 
+.home {
+  margin-top: -15px;
+  width: 100%;
+  height: 100%;
+  background-color: #edf9fe;
+}
+
+
+
 .navbar {
+
   list-style: none;
   float: right;
 }

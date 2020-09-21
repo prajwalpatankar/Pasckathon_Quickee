@@ -1,5 +1,6 @@
 import React from "react";
 import loginImg from "../../login.png";
+import Registerform from "./Registerform.js"
 
 export class Register extends React.Component {
 
@@ -17,31 +18,8 @@ export class Register extends React.Component {
             <img src={loginImg} />
           </div>
 
-          <div className="form">
+          <Registerform />
 
-            <div className="form-group">
-              <label htmlFor="username">Username</label><br></br>
-              <input type="text" name="username" placeholder="username" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email</label><br></br>
-              <input type="text" name="email" placeholder="email" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label><br></br>
-              <input type="text" name="password" placeholder="password" />
-            </div>
-
-          </div>
-
-        </div>
-
-        <div className="footer">
-          <button type="button" className="btn">
-            Register
-          </button>
         </div>
 
       </div>
