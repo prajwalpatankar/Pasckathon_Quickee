@@ -10,3 +10,18 @@ export const register = newUser => {
       console.log('Registered')
     })
 }
+
+export const login = user => {
+    return axios
+      .post('/login', {
+        "username": user.username,
+        "password": user.password
+      })
+      .then(response => {
+        // localStorage.setItem('usertoken', response.data)
+        return response.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
