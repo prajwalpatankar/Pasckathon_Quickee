@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 # from flask_jwt import JWT
@@ -6,7 +6,11 @@ from resources.user import UserRegister,UserLogin
 # from security import authenticate,identity
 import cv2
 import threading
+from flask_cors import CORS
+
 # from flask_cors import CORS
+
+UPLOAD_FOLDER = './assestes/'
 
 
 app = Flask(__name__)
@@ -14,7 +18,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = 'jose'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 api = Api(app)
+CORS(app)
 
 
 @app.before_first_request
@@ -77,6 +84,20 @@ def generate(camera_id):
       yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encodedImage) + b'\r\n')
    # release the camera
    vc.release()
+
+@app.route('/upload', methods=['POST'])
+def fileUpload():
+
+   file = request.files['file'] 
+   print(request.body, '1')
+   
+   # file = request.files['file'] 
+   # destination="/".join([target, filename])
+   # file.save(destination)
+   # session['uploadFilePath']=destination
+   response="Whatever you wish too return"
+   return {'test':'success'}
+
 
 if __name__ == '__main__':
    host = "127.0.0.1"
