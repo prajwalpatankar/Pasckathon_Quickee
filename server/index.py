@@ -1,12 +1,23 @@
-from flask import Flask, Response
+from flask import Flask, Response, request,session
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
+import os
+from werkzeug.utils import secure_filename
+import logging
 # from flask_jwt import JWT
 from resources.user import UserRegister,UserLogin
 # from security import authenticate,identity
 import cv2
 import threading
+from flask_cors import CORS, cross_origin
+
 # from flask_cors import CORS
+
+UPLOAD_FOLDER = './assestes/'
+
+# logging.basicConfig(level=logging.INFO)
+
+# logger = logging.getLogger('HELLO WORLD')
 
 
 app = Flask(__name__)
@@ -14,7 +25,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = 'jose'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 api = Api(app)
+CORS(app,expose_headers='Authorization')
 
 
 @app.before_first_request
@@ -78,6 +92,25 @@ def generate(camera_id):
    # release the camera
    vc.release()
 
+@app.route('/upload', methods=['POST','GET'])
+def fileUpload():
+
+   file = request.files['file'] 
+   filename = secure_filename(file.filename)
+   print(request.files, '1','2','3')
+   
+   # target=os.path.join(UPLOAD_FOLDER,'test_docs')
+   # if not os.path.isdir(target):
+   #    os.mkdir(target)
+   # logger.info("welcome to upload`")
+   # file = request.files['file'] 
+   # filename = secure_filename(file.filename)
+   # destination="/".join([target, filename])
+   # file.save(destination)
+   # session['uploadFilePath']=destination
+   # response="Whatever you wish too return"
+   return {"message":"Saved"}
+
 if __name__ == '__main__':
    host = "127.0.0.1"
    port = 8000
@@ -86,3 +119,4 @@ if __name__ == '__main__':
    from db import db
    db.init_app(app)
    app.run(host, port, debug, options)
+
