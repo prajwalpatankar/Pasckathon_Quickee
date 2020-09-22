@@ -7,8 +7,12 @@ function Appstream() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={'/stream/0'} className="App-logo" alt="logo" />
-        <img src={'/stream/1'} className="App-logo" alt="logo" />
+        <div className="livestream">
+          <img src={'/stream/0'} className="App-logo" alt="logo" />
+        </div>
+        <div className="livestream">
+          <img src={'/stream/1'} className="App-logo" alt="logo" />
+        </div>
       </header>
     </div>
   );

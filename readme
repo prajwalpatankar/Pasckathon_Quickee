@@ -1,6 +1,9 @@
 cd client
     npm install
     npm install react-router-dom
+    npm install axios
+    npm install reactstrap
+    npm install --save sweetalert2
     npm start
 
 cd ..
@@ -11,22 +14,10 @@ cd server
     pip3 install flask
     pip3 install numpy
     pip3 install imutils opencv-python
-    python3 -m venv env
+    pip3 install flask-SQLAlchemy
+    pip3 install flask-restful
+    pip3 flask-jwt-extended
+    python3 -m venv env(linux/mac)
+    source env/bin/activate(ubuntu/mac) / env\Scripts\activate(windows)
     python index.py
 
-
-
-
-              <div className="form">
-
-            <div className="form-group">
-              <label htmlFor="username">Username</label><br></br>
-              <input type="text" name="username" placeholder="username" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label><br></br>
-              <input type="password" name="password" placeholder="password" />
-            </div>
-
-          </div>

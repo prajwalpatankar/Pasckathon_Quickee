@@ -1,5 +1,10 @@
 import React, { Component } from "react";
+import { BrowserRouter, Link } from "react-router-dom";
+import { withRouter } from 'react-router';
 import { Button, FormGroup, Input} from "reactstrap";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
 
 class Registerform extends React.Component {
 
@@ -31,12 +36,51 @@ class Registerform extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.username,this.state.password)
+
+        // const newUser = {
+            
+        //     username: this.state.username,
+        //     password: this.state.password
+        //   }
+          console.log(this.state.username,this.state.password)
+        //   register(newUser).then(res => {
+        //     this.props.history.push(`/webcam`)
+        //   })
+        return axios
+            .post('/register', {
+                "username": this.state.username,
+                "password": this.state.password
+            })
+            .then(response => {
+                console.log('Registered')
+                console.log(response.data)
+                this.props.history.push('/login')
+
+                Swal.fire({
+                    title: 'Registration Successful',
+                    text: 'Please Log in',
+                    icon: 'success',
+                    confirmButtonText: 'Login',
+                    })
+            }).catch(err => {
+                console.log(err)
+                Swal.fire({
+                    title: 'Username or email already exists !',
+                    text: 'Please try a different username',
+                    icon: 'error',
+                    confirmButtonText: 'Try again ?',
+                    })
+
+              })
+        
     };
 
     render() {
         return(
             <div className="app-content">
+
+                
+
                 <form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <label>Username</label>
@@ -51,9 +95,11 @@ class Registerform extends React.Component {
                         <input type="password" placeholder="Password" onChange={this.handleChangepassword}  required />
                     </FormGroup>
                     <br />
-                    <button type="submit" className="btn">Register</button>
+                    <button type="submit" className="btn1">Register</button>
                 </form>
-
+                <p><br /><br />Already have an account ?   <Link to="/login">Log in</Link> </p>
+                <Link to="/"><button className="btn2"> ← </button></Link> 
+                
 
             </div>
         )
@@ -63,5 +109,4 @@ class Registerform extends React.Component {
 
 }
 
-export default Registerform;
-
+export default withRouter(Registerform);
