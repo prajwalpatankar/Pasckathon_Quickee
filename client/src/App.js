@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './components/Navbar'
 import { BrowserRouter, Route } from 'react-router-dom'
-import App1 from './components/App1'
+import { Login, Register } from "./components/login/index.js";
 import Home from './components/Home'
 import Appstream from './components/Appstream'
 
@@ -10,9 +10,9 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="App">
-                   
                     <Route exact path='/' component={Home} />
-                    <Route path='/login' component={App1} />
+                    <Route path='/login' component={Login} />
+                    <Route path='/register' component={Register} />
                     <Route path='/webcam' component={Appstream} />
                 
                 </div>

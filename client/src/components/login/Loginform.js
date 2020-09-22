@@ -38,7 +38,7 @@ class Loginform extends React.Component {
         "password": this.state.password
       })
       .then(response => {
-        localStorage.setItem('usertoken', response.data)
+        // localStorage.setItem('usertoken', response.data)
         return response.data
       }).then(res=>{
           if(!res.error){

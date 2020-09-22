@@ -1,9 +1,14 @@
 from flask import Flask, Response
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
+# from flask_jwt import JWT
 from resources.user import UserRegister,UserLogin
+# from security import authenticate,identity
 import cv2
 import threading
+# from flask_cors import CORS
+
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

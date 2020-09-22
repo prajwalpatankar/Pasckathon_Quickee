@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Button, FormGroup, Input} from "reactstrap";
 import { register } from './UserFunction'
-
+import axios from 'axios'
+import { withRouter } from 'react-router';
 class Registerform extends React.Component {
 
 
@@ -35,15 +36,27 @@ class Registerform extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        const newUser = {
+        // const newUser = {
             
-            username: this.state.username,
-            password: this.state.password
-          }
+        //     username: this.state.username,
+        //     password: this.state.password
+        //   }
           console.log(this.state.username,this.state.password)
-          register(newUser).then(res => {
-            this.props.history.push(`/webcam`)
-          })
+        //   register(newUser).then(res => {
+        //     this.props.history.push(`/webcam`)
+        //   })
+        return axios
+            .post('/register', {
+                "username": this.state.username,
+                "password": this.state.password
+            })
+            .then(response => {
+                console.log('Registered')
+                console.log(response.data)
+                this.props.history.push('/login')
+            }).catch(err => {
+                console.log(err)
+              })
         
     };
 
@@ -76,5 +89,5 @@ class Registerform extends React.Component {
 
 }
 
-export default Registerform;
+export default withRouter(Registerform);
 
