@@ -27,8 +27,9 @@ const Home = () => {
         
             <div className="row">
                 <div className="col-md-6 col-sm-12">
-                <h1>Lorem ipsum</h1>
-                <h3>Lorem ipsum asoajbs uoa ibdiabd uh aisdiasli a uaisdg laisdilag augi uaLI li ualisugliaugs lia siaug iag ifiagiy i giy silegfsile ils iysg is i lsv isvei vsf vsif vsi si vLorem ipsum asoajbs uoa ibdiabd uh aisdiasli a uaisdg laisdilag augi uaLIli ualisugliaugs lia siaug iag ifiagiy i giy silegfsile ils iysg is i lsv isvei vsf vsif vsi si v  </h3>
+                <h1>Violence Detector</h1>
+                <h3>The rapid growth of surveillance cameras to monitor human activity demands a system that can recognize violent or suspicious activities without the requirement of constant attention by respective authorities. There are instances where the nuisance creators run away after causing disruption and the authorities face a difficult time trying to tackle the issues created by them - as it becomes difficult to hold them responsible because of the time required.</h3>
+
                 </div>
                 <div className="col-md-6 col-sm-12">
                 <img src={bg1} ></img>

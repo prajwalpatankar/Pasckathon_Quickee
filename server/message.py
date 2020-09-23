@@ -24,9 +24,25 @@ import sys
 
 import h5py
 import time
+import datetime as datetime1
+import pyrebase
+
+config = {
+    "apiKey": "AIzaSyBEvhFPUvAQGPFsvjWQfbOdBUQs6DiU6H0",
+    "authDomain": "flaskreact-c0c87.firebaseapp.com",
+    "databaseURL": "https://flaskreact-c0c87.firebaseio.com",
+    "projectId": "flaskreact-c0c87",
+    "storageBucket": "flaskreact-c0c87.appspot.com",
+    "messagingSenderId": "537411848434",
+    "appId": "1:537411848434:web:903517588ed34c03fc286b",
+    "measurementId": "G-K1RNNQXEER"
+}
+
+firebase=pyrebase.initialize_app(config)
+storage = firebase.storage()
 
 
-def func(filename):
+def func(filename,num):
 
     ob = modelDone()
     file_name = filename 
@@ -75,13 +91,19 @@ def func(filename):
     flag = True
     frame_width = int(vidcap.get(3)) 
     frame_height = int(vidcap.get(4)) 
-    print("huehuehue")
+
     size = (frame_width, frame_height)
-    result = cv2.VideoWriter("./assets/detected/" + filename,  
+
+    result = cv2.VideoWriter(f"./assets/detected/tp{num}.avi",  
                             cv2.VideoWriter_fourcc(*'MJPG'), 
                             10, size) 
-    
-    print("huihui")
+    path_on_cloud = f"videos/tempvid{num}.avi"
+    path_local = f"assets/detected/tp{num}.avi"
+
+    storage.child(path_on_cloud).put(path_local)
+    # xyz = storage.child(path_on_cloud).put(path_local)
+    # downurl = xyz.getDownloadUrl()
+        
                             
 
     for i in range(len(answer)):

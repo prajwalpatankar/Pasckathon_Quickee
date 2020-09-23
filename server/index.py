@@ -121,7 +121,7 @@ def fileUpload():
    logger.info("welcome to upload`")
 
    
-
+   j = 0
    for i in request.files.getlist('file'):
       # file = request.files['file'] 
       print(i)    
@@ -129,7 +129,8 @@ def fileUpload():
       destination="/".join([target, filename])
       i.save(destination)
       # ob.get_transfer_values(file_name = destination)
-      func(destination)
+      #func(destination,j)
+      j+=1
 
 
    # session['uploadFilePath']=destination

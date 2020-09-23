@@ -45,7 +45,7 @@ class Loginform extends React.Component {
         return response.data
       }).then(res=>{
           if(!res.error){
-              this.props.history.push('/webcam')
+              this.props.history.push('/upload')
           }
       })
       .catch(err => {
