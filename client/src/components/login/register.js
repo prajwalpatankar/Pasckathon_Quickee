@@ -3,7 +3,7 @@ import { BrowserRouter, Link } from "react-router-dom";
 import loginImg from "../../login.png";
 import Registerform from "./Registerform.js"
 import 'bootstrap/dist/css/bootstrap.css';
-import Swal from 'sweetalert2';
+
 
 
 export class Register extends React.Component {
