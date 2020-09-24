@@ -11,11 +11,11 @@ import cv2
 import threading
 from flask_cors import CORS, cross_origin
 
-from eval import modelDone
-from message import func
 
-import ffmpy 
-from ffmpy import FFmpeg
+# from message import func             un-comment for model
+
+# import ffmpy 
+# from ffmpy import FFmpeg
 
 # from flask_cors import CORS
 
@@ -137,6 +137,31 @@ def fileUpload():
    # response="Whatever you wish too return"
 
    return {"message":"Saved"}
+
+################### CCTV
+camera = cv2.VideoCapture('rtsp://admin:Admin5821@192.168.0.103:554/Streaming/Channels/101.sdp')  # use 0 for web camera
+#  for cctv camera use rtsp://username:password@ip_address:554/user=username_password='password'_channel=channel_number_stream=0.sdp' instead of camera
+
+def gen_frames():  # generate frame by frame from camera
+    while True:
+        # Capture frame-by-frame
+        success, frame = camera.read()  # read the camera frame
+        if not success:
+            break
+        else:
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
+
+
+@app.route('/video_feed')
+def video_feed():
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(gen_frames(),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
 
 if __name__ == '__main__':
    host = "127.0.0.1"
