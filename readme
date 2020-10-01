@@ -11,17 +11,20 @@ cd ..
 cd server
     sudo apt install pythonpy
     sudo apt-get install python3-venv
-    python3 -m venv env(linux/mac)
-    source env/bin/activate(ubuntu/mac)   (or)   env\Scripts\activate(windows)
+    python3 -m venv env (on linux/mac)     --(or)--    py -m venv env (on windows)
+    source env/bin/activate (on ubuntu/mac) --(or)--   env\Scripts\activate (on windows)
     pip3 install -r rq.txt
-    /*    pip3 install flask
+    /*    
+        pip3 install flask
+        pip3 install flask-cors
         pip3 install numpy
         pip3 install imutils opencv-python
         pip3 install flask-SQLAlchemy
         pip3 install flask-restful
-        pip3 flask-jwt-extended
+        pip3 install flask-jwt-extended
         pip3 install tensorflow
         pip3 install keras
         pip3 install torch     */
+        
     python index.py
 
