@@ -56,7 +56,7 @@ class Registerform extends React.Component {
                 console.log(response.data)
                 this.props.history.push('/login')
 
-                Swal.fire({
+                Swal.fire({                 //popup
                     title: 'Registration Successful',
                     text: 'Please Log in',
                     icon: 'success',

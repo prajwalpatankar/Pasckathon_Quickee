@@ -182,3 +182,18 @@
   border-bottom: 1px solid #001c55;
   
 }
+
+
+
+.cctvvideo {
+  width: 800px;
+  height: auto;
+}
+
+.video-border-vio {
+  border: 5px #ff0000 solid;
+}
+
+.video-border-non {
+  border: 5px #00ff00 solid;
+}

@@ -1,4 +1,4 @@
-from flask import Flask, Response, request,session
+from flask import Flask, Response, request,session ,send_file
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 import os
@@ -10,6 +10,7 @@ from resources.user import UserRegister,UserLogin
 import cv2
 import threading
 from flask_cors import CORS, cross_origin
+import time
 
 
 # from message import func             un-comment for model
@@ -139,8 +140,9 @@ def fileUpload():
    return {"message":"Saved"}
 
 ################### CCTV
-camera = cv2.VideoCapture('rtsp://admin:Admin5821@192.168.0.103:554/Streaming/Channels/101.sdp')  # use 0 for web camera
+camera = cv2.VideoCapture('rtsp://admin:Admin5821@192.168.0.101:554/Streaming/Channels/101.sdp')  # use 0 for web camera
 #  for cctv camera use rtsp://username:password@ip_address:554/user=username_password='password'_channel=channel_number_stream=0.sdp' instead of camera
+current_val = 0
 
 def gen_frames():  # generate frame by frame from camera
     while True:
@@ -150,16 +152,29 @@ def gen_frames():  # generate frame by frame from camera
             break
         else:
             ret, buffer = cv2.imencode('.jpg', frame)
+            
+            label='Non-Violence'
+            cv2.putText(frame, label, (50, 10), cv2.FONT_HERSHEY_SIMPLEX, fontScale = 1, color = (0, 0, 255), thickness=2)         
+               
             frame = buffer.tobytes()
+            
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
 
-
 @app.route('/video_feed')
 def video_feed():
-    """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen_frames(),
+   """Video streaming route. Put this in the src attribute of an img tag."""
+   return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/f2',methods=['GET','POST'])
+def prediction():
+   k=0
+   if k==1:
+      return {"modeloutput": 1}, 201
+   else:
+      return {"modeloutput": 0}, 201
 
 
 
