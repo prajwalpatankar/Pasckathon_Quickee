@@ -11,11 +11,17 @@
     $ cd server   
     $ sudo apt install pythonpy
     $ sudo apt-get install python3-venv
-    $ python3 -m venv env (on linux/mac)     --(or)--    py -m venv env (on windows)
-    $ source env/bin/activate (on ubuntu/mac) --(or)--   env\Scripts\activate (on windows)
+    
+#### seting up on linux/max
+    $ python3 -m venv env  
+    $ source env/bin/activate  
     $ pip3 install -r rq.txt
     
-##if requirements are not installed automatically, use the folling commands :
+#### setting up on windows
+    $ py -m venv env  
+    $ env\Scripts\activate  
+     
+## if requirements are not installed automatically, use the folling commands :
     $ pip3 install flask
     $ pip3 install flask-cors
     $ pip3 install numpy
