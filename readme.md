@@ -13,6 +13,7 @@
     $ sudo apt-get install python3-venv
     
 #### seting up on linux/max
+    (might differ for windows)
     $ python3 -m venv env  
     $ source env/bin/activate  
     $ pip3 install -r rq.txt
