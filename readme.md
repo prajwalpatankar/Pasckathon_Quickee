@@ -13,14 +13,15 @@
     $ sudo apt-get install python3-venv
     
 #### seting up on linux/max
-    (might differ for windows)
     $ python3 -m venv env  
     $ source env/bin/activate  
-    $ pip3 install -r rq.txt
     
 #### setting up on windows
     $ py -m venv env  
     $ env\Scripts\activate  
+    
+### install requirements for server
+    $ pip3 install -r rq.txt  
      
 ## if requirements are not installed automatically, use the folling commands :
     $ pip3 install flask
