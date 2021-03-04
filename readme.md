@@ -36,5 +36,5 @@
     $ pip3 install torch  
   
   
-## run backend server
+## run backend server 
     $ python index.py
